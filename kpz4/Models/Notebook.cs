@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace kpz4.Models
 {
-    public class Notebook
+    public class Notebook : ICloneable
     {
         public string CPU { get; set; }
         public string RAM { get; set; }
@@ -22,6 +22,19 @@ namespace kpz4.Models
             Console.WriteLine($"Storage: {Storage}");
             Console.WriteLine($"GPU: {GPU}");
             Console.WriteLine($"Display: {Display}");
+        }
+
+        // Метод для клонування (глибоке копіювання)
+        public object Clone()
+        {
+            return new Notebook
+            {
+                CPU = this.CPU,
+                RAM = this.RAM,
+                Storage = this.Storage,
+                GPU = this.GPU,
+                Display = this.Display
+            };
         }
     }
 }
